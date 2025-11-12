@@ -1,11 +1,14 @@
+from django.shortcuts import redirect
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin_login/', views.admin_login, name='admin_login'),
-    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
-    path('add_employee/', views.add_employee, name='add_employee'),
-    path('view_employees/', views.view_employees, name='view_employees'),
-    path('api/user_login/', views.user_login, name='user_login_api'),
+    path('', lambda request: redirect('login')),  # 👈 redirect root to /login/
+    path('login/', views.login_view, name='login'),
+    path('success/', views.success_view, name='success'),
+    path('logout/', views.logout_view, name='logout'),
+    path('register/', views.register_view, name='register'),
+    path('employees/', views.employee_list_view, name='employees'),
+
 
 ]
